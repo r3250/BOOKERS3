@@ -1,0 +1,25 @@
+<%= render 'users/list' %>
+
+
+<h1>Users</h1>
+<% @users.each do |user| %>
+<p>Image</p>
+<p>name</p>
+<%= user.name %>
+<%= link_to "Show", user_path(user.id) %>
+<% end %>
+
+
+<h2>New Book</h2>
+<%= form_for(@book) do |f| %>
+
+<label>Titel</label>
+<%= f.text_field :title %>
+<br>
+<label>Opinion</label>
+<%= f.text_area :opinion %>
+<br>
+<%= f.submit "Create Book" %>
+<% end %>
+
+

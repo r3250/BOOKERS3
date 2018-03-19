@@ -1,0 +1,16 @@
+
+<%= render 'users/list' %>
+
+<h1>Book details</h1>
+
+<p>Title</p>
+<p><%= link_to @book.title, book_path(@book.id) %></p>
+<p>Opinion</p>
+<P><%= @book.opinion %></P>
+
+<% if @book.user_id == current_user.id %>
+<%= link_to "Edit", edit_book_path(@book.id) %>
+<%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
+<% end %>
+
+<%= render 'books/list', book: @book %>

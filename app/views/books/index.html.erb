@@ -1,0 +1,22 @@
+<%= render 'users/list' %>
+
+
+<h1>Books</h1>
+<p>Title<p>
+<p>Body</p>
+
+<% @books.each do |book| %>
+
+<p>Title</p>
+<p><%= link_to book.title, book_path(book.id) %></p>
+<p>Opinion</p>
+<p><%= book.opinion %></p>
+
+
+<% end %>
+
+
+
+
+<%= render 'books/list', book: @book %>
+
