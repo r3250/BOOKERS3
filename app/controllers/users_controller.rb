@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def update
         user = User.find(params[:id])
         user.update(user_params)
-        redirect_to user_path(current_user.id)
+        redirect_to books_path
   end
 
 
@@ -27,6 +27,6 @@ class UsersController < ApplicationController
       params.require(:book).permit(:title, :opinion, :user_id)
     end
     def user_params
-      params.require(:user).permit(:name, :introduction, :image_id)
+      params.require(:user).permit(:name, :introduction, :image)
     end
   end

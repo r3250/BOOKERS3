@@ -1,9 +1,22 @@
 <h1>Users info</h1>
 
-<p><%= attachment_image_tag current_user, :image, :fill, 100, 100,format:'jpeg',fallback:'noimage.jpeg' %></p>
-<p>Name</p>
-<p><%= current_user.name %></p>
-<p>Introduction</p>
-<p><%= current_user.introduction %></p>
 
-<%= link_to "Edit", edit_user_path(current_user.id) %>
+
+<p><%= attachment_image_tag user, :image, :fill, 100, 100,format:'jpeg',fallback:'noimage.jpeg' %></p>
+
+			<table class="table">
+				<tbody>
+				  <tr></tr>
+				  <tr>
+					<th>Name</th>
+				    <th><%= user.name %></th>
+				  </tr>
+				  <tr>
+					<th>Introduction</th>
+					<th><%= user.introduction %></th>
+				  </tr>
+			    </tbody>
+			</table>
+<% if user.id == current_user.id %>
+<%= link_to "", edit_user_path(user.id), class: "btn btn-default glyphicon glyphicon-wrench btn-block btn-md" %>
+<% end %>

@@ -1,16 +1,42 @@
-
-<%= render 'users/list' %>
-
+<div class="container">
+	<div class="row">
+	<div class="col-lg-3">
+	<%= render 'users/list', user: @book.user %>
+	<%= render 'books/list', book: @post %>
+	</div>
 <h1>Book details</h1>
+		<div class="col-lg-9">
+		<table class="table table-hover table-inverse">
 
-<p>Title</p>
-<p><%= link_to @book.title, book_path(@book.id) %></p>
-<p>Opinion</p>
-<P><%= @book.opinion %></P>
+			 <thead>
+				 	<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Opinion</th>
+						<th></th>
+						<th></th>
+					</tr>
+			</thead>
 
-<% if @book.user_id == current_user.id %>
-<%= link_to "Edit", edit_book_path(@book.id) %>
-<%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
-<% end %>
+		    <tbody>
+					      <tr>
+								<td><%= link_to user_path(@book.id) do %>
+							    <%= attachment_image_tag @book.user, :image, :fill, 40, 40,format:'jpeg',fallback:'noimage2.jpeg' %><br>
+							    	<%= @book.user.name %></td>
+							    <% end %>
+								<td><%= link_to @book.title, book_path(@book.id), class: "text-muted" %></td>
+								<td><%= @book.opinion %></td>
 
-<%= render 'books/list', book: @book %>
+								<% if @book.user_id == current_user.id %>
+								<td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-xs" %></td>
+								<td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger btn-xs" %></td>
+					            <% end %>
+			              </tr>
+		   </tbody>
+		</table>
+   	    </div>
+	</div>
+</div>
+
+
+
