@@ -1,0 +1,39 @@
+
+
+<h2>New Book</h2>
+<%= form_for(book) do |f| %>
+
+  <% if @book.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+        <h6>prohibited this obj from being saved:<%= @book.errors.count %>errors</h6>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+</div>
+  <% end %>
+
+
+          <label>Titel</label>
+                    <div class="row">
+                  	<div class="col-xs-12">
+                          <%= f.text_field :title, class: "form-control" %>
+                  	</div>
+                    </div>
+              <br>
+          <label>Opinion</label>
+                    <div class="row">
+                  	<div class="col-xs-12">
+                          <%= f.text_area :opinion, class: "form-control" %>
+                  	</div>
+                    </div>
+              <br>
+                    <div class="row">
+                  	<div class="col-xs-12">
+                          <%= f.submit "Create Book", class: "btn btn-primary btn-block  btn-md" %>
+                  	</div>
+                    </div>
+<% end %>
+
+
