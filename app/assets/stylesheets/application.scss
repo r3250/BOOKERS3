@@ -17,6 +17,7 @@
  @import "bootstrap";
 
 
+
 a:hover {
 	text-decoration: none;
 	background-color: black;
@@ -29,15 +30,19 @@ header {
  .header-title {
  	font-size: 20px;
  	color: white;
- 	padding-top: 10px;
+ 	padding-top: 11px;
 }
- .icon {
- float: left;
- padding-top: 5px;
- }
 
+.nav_icon{
+	position: relative;
+	bottom: 3px;
+	font-size: 13px;
+}
 .actions-box {
 	margin-top: 10px;
 	margin-bottom: 5px;
 }
 
+.flash-message {
+	color: green;
+}

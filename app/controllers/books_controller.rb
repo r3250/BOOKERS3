@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_book, only:[:edit, :update]
+  
   def index
       @book = Book.new
       @books = Book.all
@@ -9,7 +11,7 @@ class BooksController < ApplicationController
   	book = Book.new(book_params)
     book.user_id = current_user.id
   	if book.save
-  	redirect_to book_path(book.id)
+  	redirect_to book_path(book.id), notice: '投稿成功'
     else
     @book = book
     @books = Book.all
@@ -42,6 +44,13 @@ class BooksController < ApplicationController
     private
     def book_params
     	params.require(:book).permit(:title, :opinion, :user_id)
+    end
+
+    def correct_book
+      book = Book.find(params[:id])
+      if current_user != book.user
+         redirect_to books_path
+      end
     end
 
 end
